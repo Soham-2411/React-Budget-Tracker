@@ -39,7 +39,7 @@ function BudgetCard(props) {
                 </ProgressBar>)}
                 <Stack className="d-flex justify-content-end mt-4" direction="horizontal" gap="2">
                     {!props.hide && (<Button onClick={props.openAddExpense} variant="outline-primary">Add expense</Button>)}
-                    {!props.hide && (<Button variant="outline-secondary">View Expenses</Button>)}
+                    {!props.hide && (<Button onClick={()=>props.onViewExpenseClick()} variant="outline-secondary">View Expenses</Button>)}
                 </Stack>
             </Card.Body>
         </Card>

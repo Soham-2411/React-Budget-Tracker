@@ -31,9 +31,22 @@ export const BudgetsContextProvider = ({ children }) => {
         })
     }
     function deleteBudget({idToDelete}) { 
-        // Move all expenses in the budget to uncategorized
+        console.log(idToDelete)
+        console.log(expenses)
+        setExpenses(prevExpenses => {
+            return prevExpenses.map((expense)=>{
+                console.log(expense.budgetId)
+                console.log(idToDelete)
+                if(expense.budgetId !== idToDelete.id){
+                    return expense
+                } else{
+                    return {...expense, budgetId: UNCATEGORIZED_BUDGET_ID}
+                }
+            })
+        })
+        console.log(expenses)
         setBudgets(prevBudgets => {
-            return prevBudgets.filter(budget => budget.id !== idToDelete)
+            return prevBudgets.filter(budget => budget !== idToDelete)
         })
     }
     function deleteExpense({idToDelete}) { 
